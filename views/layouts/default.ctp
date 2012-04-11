@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 	<title>
-		<?php __('Germídias:'); ?>
+		<?php __('Trends Alert:'); ?>
 		<?php echo $title_for_layout; ?>
 	</title>
 	
@@ -32,18 +32,7 @@
 	<?php echo $this->element('menu', array('controller'=>$this->name)); ?>
 	<div class="container-fluid">
 		<div class="row-fluid">
-			<div class="span2">
-				<?php 
-					if($this->name == "Monitoramentos"):
-						echo $this->element('sidebar-monitoramentos',array('action'=>$this->action));
-					elseif($this->name == "Tags"):
-						echo $this->element('sidebar-tags',array('action'=>$this->action));
-					else:
-						echo $this->element('sidebar');
-					endif;
-				?>
-			</div>
-			<div id="page-content" class="span10">
+			<div id="page-content" class="span12">
 				<?php echo $content_for_layout; ?>
 			</div>
 		</div>
