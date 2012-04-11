@@ -1,59 +1,79 @@
-<?php
-/**
- *
- * PHP versions 4 and 5
- *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2010, Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright 2005-2010, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       cake
- * @subpackage    cake.cake.console.libs.templates.skel.views.layouts
- * @since         CakePHP(tm) v 0.10.0.1076
- * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
- */
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<?php echo $this->Html->charset(); ?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
 	<title>
-		<?php __('CakePHP: the rapid development php framework:'); ?>
+		<?php __('Germídias:'); ?>
 		<?php echo $title_for_layout; ?>
 	</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistema para gerenciamento de Mídias Sociais em setores públicos">
+    <meta name="author" content="Sérgio Vilar - sergiovilar.r@gmail.com">
+	
 	<?php
-		echo $this->Html->meta('icon');
-
-		echo $this->Html->css('cake.generic');
-
-		echo $scripts_for_layout;
+		echo $this->Html->css('bootstrap.min');
+		echo $this->Html->css('bootstrap-responsive.min');
+		echo $this->Html->css('colorpicker');
+		echo $this->Html->css('style');
 	?>
+
+	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <?php echo $this->Html->meta('icon'); ?>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo $this->webroot; ?>img/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo $this->webroot; ?>img/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="<?php echo $this->webroot; ?>img/apple-touch-icon-57-precomposed.png">
 </head>
 <body>
-	<div id="container">
-		<div id="header">
-			<h1><?php echo $this->Html->link(__('CakePHP: the rapid development php framework', true), 'http://cakephp.org'); ?></h1>
+	<?php echo $this->element('menu', array('controller'=>$this->name)); ?>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span2">
+				<?php 
+					if($this->name == "Monitoramentos"):
+						echo $this->element('sidebar-monitoramentos',array('action'=>$this->action));
+					elseif($this->name == "Tags"):
+						echo $this->element('sidebar-tags',array('action'=>$this->action));
+					else:
+						echo $this->element('sidebar');
+					endif;
+				?>
+			</div>
+			<div id="page-content" class="span10">
+				<?php echo $content_for_layout; ?>
+			</div>
 		</div>
-		<div id="content">
+		<hr>
+      	<footer>
+        	<p>&copy; Company 2012</p>
+      	</footer>
+    </div><!--/.fluid-container-->
+	
+	<?php //echo $this->element('sql_dump'); ?>
+	
+	<?php 
+		echo $scripts_for_layout;
+		echo $this->Html->script('jquery.js');
+		echo $this->Html->script('bootstrap-transition.js');
+		echo $this->Html->script('bootstrap-alert.js');
+		echo $this->Html->script('bootstrap-modal.js');
+		echo $this->Html->script('bootstrap-dropdown.js');
+		echo $this->Html->script('bootstrap-scrollspy.js');
+		echo $this->Html->script('bootstrap-tab.js');
+		echo $this->Html->script('bootstrap-tooltip.js');
+		echo $this->Html->script('bootstrap-popover.js');
+		echo $this->Html->script('bootstrap-button.js');
+		echo $this->Html->script('bootstrap-collapse.js');
+		echo $this->Html->script('bootstrap-carousel.js');
+		echo $this->Html->script('bootstrap-typeahead.js');
+		echo $this->Html->script('bootstrap-colorpicker.js');
+		//echo $script->link('cakebootstrap.js');
+		echo $this->Html->script('functions.js');
+	?>
 
-			<?php echo $this->Session->flash(); ?>
-
-			<?php echo $content_for_layout; ?>
-
-		</div>
-		<div id="footer">
-			<?php echo $this->Html->link(
-					$this->Html->image('cake.power.gif', array('alt'=> __('CakePHP: the rapid development php framework', true), 'border' => '0')),
-					'http://www.cakephp.org/',
-					array('target' => '_blank', 'escape' => false)
-				);
-			?>
-		</div>
-	</div>
-	<?php echo $this->element('sql_dump'); ?>
 </body>
 </html>

@@ -31,4 +31,32 @@
  * @subpackage    cake.app
  */
 class AppController extends Controller {
+	var $components = array('Auth','Session');
+	var $helpers = array('Html', 'Form', 'Session','Flash');
+ 	
+ 	function beforeFilter() {
+  		$this->Auth->userModel = 'User';
+  		$this->Auth->fields = array('username' => 'email', 'password' => 'password');
+  		$this->Auth->loginAction = array('admin' => false, 'controller' => 'users', 'action' => 'login');
+  		$this->Auth->loginRedirect = array('controller' => 'alerts', 'action' => 'index');
+
+  		// Cadastra novo usuário
+		/*$this->loadModel('User');
+
+		$this->User->create();
+		$this->User->save(array(
+			'email' => 'admin@admin.com',
+			'password' => $this->Auth->password('admin'),
+			'level' => '10',
+			'ativo' => true
+		));*/
+
+ 	}
+
+
+	function flash( $message, $class = 'status' ) {
+		$old = $this->Session->read('messages');
+		$old[$class][] = $message;
+		$this->Session->write('messages', $old );
+	}
 }

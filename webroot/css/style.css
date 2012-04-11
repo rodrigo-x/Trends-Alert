@@ -1,0 +1,15 @@
+body {padding-top:60px; padding-bottom: 40px;}
+.sidebar-nav {padding: 9px 0;}
+legend h1{padding-bottom:10px;}
+.input{padding-top:10px;}
+.submit{margin-top:10px;}
+fieldset .well{margin-top:20px;}
+#mais-filtro{margin-bottom:30px;}
+.label{position:relative; top:-2px}
+.alert{display:none;}
+.error,.form-error,.error label{color: #B94A48;border-color: #B94A48;}
+.form-error{float: left; margin-right: 10px;}
+.error-message{clear: right;margin-bottom: 20px;padding-top: 3px;}
+table{margin-top:20px;margin-bottom:30px;}
+span.btn a:hover{text-decoration:none}
+.tips code{display:block;margin-top:5px;}
